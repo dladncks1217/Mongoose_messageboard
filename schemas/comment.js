@@ -18,4 +18,4 @@ const commentSchema = new Schema({
     },
 });
 //_id, 작성자, 댓글내용, 생성일
-module.exports = mongoose.model('User',commentSchema);
+module.exports = mongoose.model('Comment',commentSchema);
