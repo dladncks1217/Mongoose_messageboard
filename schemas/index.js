@@ -6,7 +6,7 @@ module.exports=()=>{
             mongoose.set('debug',true);  //배포 상황이 아닐 때 (지금은 development 즉, 개발상황)몽구스를 디버그 모드 즉, 에러가 나면 에러를 표시하는 모드로 바꿔주는 코드.
         }
         mongoose.connect('mongodb://root:nodejsbook@localhost:27017/admin', { //몽고디비와 express서버 연결
-            dbname: 'nodejsbook',
+            dbName: 'nodejsbook',
         }, (error) => {
             if (error) {
                 console.log('몽고디비 연결 에러', error);
