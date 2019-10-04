@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 const User = require('../schemas/user');
+
+const  router = express.Router();
 /* GET home page. */
 router.get('/', (req, res, next)=> {
-    User.find()
+    User.find({})
         .then((users)=>{  //몽구스도 promise 지원.
             res.json(users);
         })
@@ -15,8 +16,8 @@ router.get('/', (req, res, next)=> {
 router.post('/',(req,res,next)=>{
     const user = new User({    //mongoose에서 새로운 document를 생성하는 방법 (시퀄라이즈에서는 create.user)
        name: req.body.name,
-        age:req.body.age,
-        married:req.body.married,
+        age: req.body.age,
+        married: req.body.married,
     });
     user.save()
         .then((result)=>{
