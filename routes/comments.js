@@ -4,8 +4,8 @@ const router = express.Router();
 
 // GET/comments/:id
 router.get('/:id', (req, res, next)=> {
-    Comment.find({commenter:req.params.id}) //id가 맞는 사람의 id를 가져와야 하므로 이 조건을 추가해주어야 한다.
-        .then((comments)=>{
+    Comment.find({commenter:req.params.id}).populate('commenter') //id가 맞는 사람의 id를 가져와야 하므로 이 조건을 추가해주어야 한다. populate()는 시퀄라이즈의 include 옵션과 비슷하다.
+        .then((comments)=>{                                     //mongoose에서 populate 해주는것. mysql의 join과 비슷하다. 물론 mongoose에서 하기 때문에 성능은 떨어짐.
             res.json(comments);
         })
         .catch((error)=>{
